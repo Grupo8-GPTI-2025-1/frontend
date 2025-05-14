@@ -1,18 +1,33 @@
-FROM node:20-alpine AS builder
+FROM node:lts
 
-RUN corepack enable && corepack prepare pnpm@latest --activate
+WORKDIR /property-broker-frontend
 
-WORKDIR /app
-
-COPY package.json pnpm-lock.yaml ./
-
-RUN pnpm install --frozen-lockfile
+COPY package*.json ./
+RUN npm install
 
 COPY . .
 
-RUN pnpm run build
+RUN npm run build
 
 EXPOSE 3000
-# ENV NODE_ENV=production
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start"] 
+
+# FROM node:20-alpine AS builder
+
+# RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# WORKDIR /app
+
+# COPY package.json pnpm-lock.yaml ./
+
+# RUN pnpm install --frozen-lockfile
+
+# COPY . .
+
+# RUN pnpm run build
+
+# EXPOSE 3000
+# # ENV NODE_ENV=production
+
+# CMD ["npm", "run", "start"]
