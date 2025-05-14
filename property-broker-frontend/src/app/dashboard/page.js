@@ -19,10 +19,12 @@ const styles = {
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    fontFamily: 'Arial, sans-serif',
+    fontFamily: 'Helvetica, sans-serif',
+    fontWeight: '100',
+
   },
   header: {
-    backgroundColor: '#0070f3',
+    backgroundColor: '#6f32e0',
     padding: '1rem',
     color: '#fff',
     textAlign: 'center',
