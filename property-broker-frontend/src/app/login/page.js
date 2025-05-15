@@ -68,7 +68,7 @@ const styles = {
   },
   button: {
     padding: '0.75rem',
-    backgroundColor: '#0070f3',
+    backgroundColor: '#6f32e0',
     color: '#fff',
     border: 'none',
     borderRadius: '4px',
