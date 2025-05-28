@@ -4,7 +4,8 @@ Construido en base a React + Next.js
 ## Para correr en local
 En primer lugar debes ubicarte en la carpeta `property-broker-frontend` e instalar las dependencias y paquetes
 
-´´´npm install´´´
+```cd property-broker-frontend```
+```npm install```
 
 Luego de que se carguen, solo debes correr en local la aplicación con
 
