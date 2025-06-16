@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import Navbar from '../components/navbar/Navbar';
-import './register.css';
 
 export default function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -22,15 +21,15 @@ export default function RegisterForm() {
   return (
     <>
     <Navbar />
-    <div className='container'>
-    <form onSubmit={handleSubmit} className='form'>
-        <h2 className='title'>Registrar nueva cuenta</h2>
+    <div style={styles.container}>
+    <form onSubmit={handleSubmit} style={styles.form}>
+        <h2 style={styles.title}>Registrar nueva cuenta</h2>
       <input
         type="text"
         placeholder="Nombre de usuario"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        className='input'
+        style={styles.input}
         required
       />
 
@@ -39,7 +38,7 @@ export default function RegisterForm() {
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className='input'
+        style={styles.input}
         required
       />
 
@@ -48,7 +47,7 @@ export default function RegisterForm() {
         placeholder="Contraseña"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className='input'
+        style={styles.input}
         required
       />
 
@@ -57,15 +56,68 @@ export default function RegisterForm() {
         placeholder="Confirmar contraseña"
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
-        className='input'
+        style={styles.input}
         required
       />
 
-      <button type="submit" className='primary-button'>Registrarse</button>
-    <p className='lowerlink'>¿Ya tienes una cuenta registrada? <a href="/login" className='link'>inicia sesión aquí</a></p>
+      <button type="submit" style={styles.button}>Registrarse</button>
+    <p style={styles.lowerlink}>¿Ya tienes una cuenta registrada? <a href="/login" style={styles.link}>inicia sesión aquí</a></p>
 
     </form>
     </div>
     </>
   );
 }
+
+// Asegúrate de definir o importar `styles.input` y `styles.button` desde tu diccionario de estilos.
+const styles = {
+  input: {
+    padding: '0.75rem',
+    marginBottom: '1rem',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
+    fontSize: '1rem',
+    width: '100%',
+  },
+  button: {
+    padding: '0.75rem',
+    backgroundColor: '#6f32e0',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    fontSize: '1rem',
+    cursor: 'pointer',
+    width: '100%',
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: 'calc(100vh - 64px)',   // resta la altura del navbar
+    paddingTop: '64px',                // evita que quede tapado
+    backgroundColor: '#f2f2f2',
+  },
+  form: {
+    backgroundColor: '#fff',
+    padding: '2rem',
+    borderRadius: '8px',
+    boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+    width: '300px',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  title: {
+    marginBottom: '1rem',
+    textAlign: 'center',
+  },
+  lowerlink: {
+    marginTop: '1rem',
+    textAlign: 'center',
+    fontSize: '0.9rem',
+    color: '#777',
+  },
+  link: {
+    color: '#6f32e0',
+    textDecoration: 'none',
+  }
+};
