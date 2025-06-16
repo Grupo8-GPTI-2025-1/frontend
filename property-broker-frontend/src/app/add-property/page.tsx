@@ -1,65 +1,93 @@
-import React, { JSX } from "react";
-import { Frame } from "../components/frame/Frame";
-import Navbar from "../components/navbar/Navbar";
-// import { PropertyDefaultWrapper } from "./PropertyDefaultWrapper";
-import { PropiedadDropdown } from "../components/propiedad-dropdown/PropiedadDropdown";
-import "./style.css";
+'use client';
 
-export default function AddProperty() {
+import { useState } from 'react';
+import Dropdown from '../components/Dropdown';
+import Navbar from '../components/navbar/Navbar';
+import './styles.css';
+
+const sizeOptions = [
+  '0-30m2',
+  '30-60m2',
+  '60-90m2',
+  '90-120m2',
+  '120m2 - 150m2',
+  '150m2 - 180m2',
+  '180m2 - 210m2',
+  '210 m2 - 240m2',
+  '240m2 - 270m2',
+  '270m2 - 300m2',
+  '+300m2'
+].map((o) => ({ label: o, value: o }));
+
+const comunaOptions = [
+  'Cerrillos',
+  'Cerro Navia',
+  'Conchalí',
+  'El Bosque',
+  'Estación Central',
+  'Huechuraba',
+  'Independencia',
+  'La Cisterna',
+  'La Florida',
+  'La Pintana',
+  'La Granja',
+  'La Reina',
+  'Las Condes',
+  'Lo Barnechea',
+  'Lo Espejo',
+  'Lo Prado',
+  'Macul',
+  'Maipú',
+  'Ñuñoa',
+  'Pedro Aguirre Cerda',
+  'Peñalolén',
+  'Providencia',
+  'Pudahuel',
+  'Quilicura',
+  'Quinta Normal',
+  'Recoleta',
+  'Renca',
+  'San Miguel',
+  'San Joaquín',
+  'San Ramón',
+  'Santiago',
+  'Vitacura',
+].map((o) => ({ label: o, value: o }));
+
+const typeOptions = [
+  'Departamento',
+  'Casa',
+  'Otro',
+].map((o) => ({ label: o, value: o }));
+
+export default function AddProperties() {
+  const [size, setSize] = useState('');
+  const [comuna, setComuna] = useState('');
+  const [type, setType] = useState('');
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    // For now just log the form values
+    console.log({ size, comuna, type });
+  }
+
   return (
-    <>
-    <Navbar />
-    <div className="add-property">
-      <div className="div-2">
-        <p className="p">Ingresa aquí las características de tu propiedad</p>
-
-        <div className="overlap-group">
-          <div className="rectangle" />
-
-          <div className="text-wrapper-2">Cantidad de baños</div>
-
-          <div className="text-wrapper-3">Comuna</div>
-
-          <div className="rectangle-2" />
-
-          <div className="text-wrapper-4">Tamaño</div>
-
-          <div className="text-wrapper-5">m</div>
-
-          <div className="text-wrapper-6">2</div>
-
-          <PropiedadDropdown
-            frameUnion="union-5.svg"
-            property1="default"
-          />
-          <PropiedadDropdown
-            frameUnion="union-6.svg"
-            property1="default"
-          />
-        </div>
-
-        <div className="text-wrapper-7">Tamaño</div>
-
-        <div className="text-wrapper-8">Tipo de propiedad</div>
-
-        <div className="propiedad-dropdown-2">
-          <Frame className="frame-2" union="union-7.svg" />
-          <div className="frame-3">
-            <div className="tipo-3">Departamento</div>
-          </div>
-
-          <div className="frame-3">
-            <div className="tipo-3">Casa</div>
-          </div>
-        </div>
-
-        {/* <PropertyDefaultWrapper
-          className="propiedad-dropdown-3"
-          frameUnion="union-4.svg"
-          property1="default"
-        /> */}
-      </div>
-    </div>
+  <>
+  <Navbar/>
+    <main className="mx-auto max-w-lg p-4">
+      <h1 className="text-2xl font-semibold mb-4">Agregar Propiedad</h1>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <Dropdown label="Tamaño" options={sizeOptions} value={size} onChange={setSize} />
+        <Dropdown label="Comuna" options={comunaOptions} value={comuna} onChange={setComuna} />
+        <Dropdown label="Tipo de propiedad" options={typeOptions} value={type} onChange={setType} />
+        <button
+          type="submit"
+          className="primary-button"
+        >
+          Guardar
+        </button>
+      </form>
+    </main>
     </>
   );
-};
+}
