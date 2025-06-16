@@ -1,6 +1,7 @@
 
 // app/propiedades/page.tsx       (o pages/propiedades/index.tsx si usas Pages Router)
 'use client';
+import Navbar from '../components/navbar/Navbar';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useProperties } from '@/hooks/useProperties';
@@ -20,6 +21,8 @@ function ListadoInner() {
   const { data, isLoading, isError } = useProperties(8);
 
   return (
+    <>
+    <Navbar/>
     <main className="mx-auto max-w-screen-2xl px-4 py-8 lg:px-8">
       {/* Aquí iría tu <FilterBar /> */}
       <PropertyGrid
@@ -28,5 +31,6 @@ function ListadoInner() {
         isError={isError}
       />
     </main>
+    </>
   );
 }

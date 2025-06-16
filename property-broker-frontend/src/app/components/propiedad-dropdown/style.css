@@ -1,0 +1,51 @@
+.propiedad-dropdown {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 186px;
+}
+
+.propiedad-dropdown .class {
+  align-self: stretch !important;
+  border: 1px solid !important;
+  border-color: #767676 !important;
+  width: 100% !important;
+}
+
+.propiedad-dropdown .class-2 {
+  align-self: stretch !important;
+  width: 100% !important;
+}
+
+.propiedad-dropdown .tipo-wrapper {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  gap: 10px;
+  height: 51px;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
+
+.propiedad-dropdown .tipo {
+  color: #767676;
+  font-family: "Inter-Light", Helvetica;
+  font-size: 16px;
+  font-weight: 300;
+  height: 31px;
+  letter-spacing: 1.60px;
+  line-height: normal;
+  margin-top: -1.00px;
+  position: relative;
+  width: 136px;
+}
+
+.propiedad-dropdown.default {
+  border: 1px solid;
+  border-color: #767676;
+  height: 51px;
+  overflow: hidden;
+}

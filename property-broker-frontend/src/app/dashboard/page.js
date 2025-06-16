@@ -1,16 +1,18 @@
 'use client';
 
+import Navbar from "../components/navbar/Navbar";
+
 export default function DashboardPage() {
   return (
+    <>
+    <Navbar/>
     <div style={styles.container}>
-      <header style={styles.header}>
-        <h1 style={styles.title}>Property Broker</h1>
-      </header>
       <main style={styles.main}>
         <p>Welcome to the dashboard!</p>
         {/* Add your dashboard components here */}
       </main>
     </div>
+    </>
   );
 }
 

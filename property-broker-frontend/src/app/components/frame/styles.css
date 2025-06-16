@@ -1,0 +1,29 @@
+.frame {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  height: 51px;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+  width: 186px;
+}
+
+.frame .text-wrapper {
+  color: #767676;
+  font-family: "Inter-Light", Helvetica;
+  font-size: 16px;
+  font-weight: 300;
+  height: 31px;
+  letter-spacing: 1.60px;
+  line-height: normal;
+  margin-top: -1.00px;
+  position: relative;
+  width: 136px;
+}
+
+.frame .union {
+  height: 10.33px;
+  position: relative;
+  width: 19.62px;
+}
