@@ -1,7 +1,7 @@
 // src/components/propiedades/PropertyCard.tsx
 import React from 'react';
 import './property-card.css';
-import { Property } from '@/lib/types';
+import { Property } from '@/lib/types'
 
 export type Props = {
   property: Property;
