@@ -1,7 +1,7 @@
 // 
 // src/components/propiedades/PropertyGrid.tsx
 import PropertyCard from './PropertyCard';
-import SkeletonCard from './SkeletonCard';
+import SkeletonCard from '../SkeletonCard';
 import { Property } from '@/lib/types';
 
 interface Props {

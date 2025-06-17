@@ -29,8 +29,8 @@ export default function Home() {
         <br />
       <div className="button-or-button">
         <Link href="/login" className="primary-button">Iniciar sesión</Link>
-        <span className="or">o</span>
         <Link href="/register" className="primary-button">Registrarse</Link>
+        <Link href='/home' className='primary-button'>Dev Mode</Link>
       </div>
       </main>
     </div>
