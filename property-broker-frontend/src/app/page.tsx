@@ -5,29 +5,33 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <Navbar/>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet"></link>
-      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-            <div className="landing-text" style={styles["landing-text"]}>
-              <div className="text-wrapper-5" style={styles["property-expert-logo"]}>PROPERTY EXPERT</div>
-              <br />
-              <div className="div" style={styles.bajada}>Tu herramienta de decidir de manera <b>justa</b> y precisa  el valor de tu propiedad</div>
-              <br />
-              <br />
-              <div className="unordered-list" style={styles["unordered-list"]}>
-                <ul>
-                  <li>Compara tu propiedad con las de Airbnb y el Portal Inmobiliario</li>
-                  <li>Calcula el precio de mercado de tu propiedad mediante otras con características similares</li>
-                  <li>Descubre la oferta inmobiliaria en Santiago de Chile</li>
-                </ul>
-              </div>
+      <Navbar />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet" />
+      
+      <div className="flex flex-col items-center justify-start min-h-screen px-8 py-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+        <main className="flex flex-col gap-8 items-center sm:items-start">
+          <div className="landing-text" style={styles["landing-text"]}>
+            <div className="text-wrapper-5" style={styles["property-expert-logo"]}>
+              PROPERTY EXPERT
             </div>
             <br />
+            <div className="div" style={styles.bajada}>
+              Tu herramienta de decidir de manera <b>justa</b> y precisa el valor de tu propiedad
+            </div>
+            <br />
+            <div className="unordered-list" style={styles["unordered-list"]}>
+              <ul>
+                <li>Compara tu propiedad con las de Airbnb y el Portal Inmobiliario</li>
+                <li>Calcula el precio de mercado de tu propiedad mediante otras con características similares</li>
+                <li>Descubre la oferta inmobiliaria en Santiago de Chile</li>
+              </ul>
+            </div>
+          </div>
+
           <div className="button-or-button">
             <Link href="/login" className="primary-button">Iniciar sesión</Link>
             <Link href="/register" className="primary-button">Registrarse</Link>
-            <Link href='/home' className='primary-button'>Dev Mode</Link>
+            <Link href="/home" className="primary-button">Dev Mode</Link>
           </div>
         </main>
       </div>
@@ -35,7 +39,8 @@ export default function Home() {
   );
 }
 
-const styles = {
+
+const styles: { [key: string]: React.CSSProperties } = {
   "landing-text": {
     height: '272px',
     // position: 'relative',
@@ -77,9 +82,9 @@ iniciar: {
 },
 "property-expert-logo": {
   fontSize: '76px',
-  fontFamilt: '"300 Inter-Normal", Helvetica',
+  fontFamily: '"300 Inter-Normal", Helvetica',
   letterSpacing: '9.6px',
-  lineHeight: '15px',
+  lineHeight: '1.1',
   color: '#342B46',
   textAlign: 'center'
 },
