@@ -16,7 +16,8 @@
     "pnpm": "^10.11.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-native-reanimated": "^3.0.0"
+    "react-native-reanimated": "^3.0.0",
+    "webpack": "^5.99.9"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
