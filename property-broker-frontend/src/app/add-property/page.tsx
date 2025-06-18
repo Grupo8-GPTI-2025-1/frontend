@@ -1,65 +1,157 @@
-import React, { JSX } from "react";
-import { Frame } from "../components/frame/Frame";
-import Navbar from "../components/navbar/Navbar";
-// import { PropertyDefaultWrapper } from "./PropertyDefaultWrapper";
-import { PropiedadDropdown } from "../components/propiedad-dropdown/PropiedadDropdown";
-import "./style.css";
+'use client';
 
-export default function AddProperty() {
+import { useState } from 'react';
+import Dropdown from '../components/Dropdown';
+import Navbar from '../components/navbar/Navbar';
+import './styles.css';
+
+const comunaOptions = [
+  'Cerrillos',
+  'Cerro Navia',
+  'Conchalí',
+  'El Bosque',
+  'Estación Central',
+  'Huechuraba',
+  'Independencia',
+  'La Cisterna',
+  'La Florida',
+  'La Pintana',
+  'La Granja',
+  'La Reina',
+  'Las Condes',
+  'Lo Barnechea',
+  'Lo Espejo',
+  'Lo Prado',
+  'Macul',
+  'Maipú',
+  'Ñuñoa',
+  'Pedro Aguirre Cerda',
+  'Peñalolén',
+  'Providencia',
+  'Pudahuel',
+  'Quilicura',
+  'Quinta Normal',
+  'Recoleta',
+  'Renca',
+  'San Miguel',
+  'San Joaquín',
+  'San Ramón',
+  'Santiago',
+  'Vitacura',
+].map((o) => ({ label: o, value: o }));
+
+const typeOptions = [
+  'Departamento',
+  'Casa',
+  'Otro',
+].map((o) => ({ label: o, value: o }));
+
+const nOfBathroomsOptions = [
+  '1','2','3','4','5','6+',
+].map((o) => ({ label: o, value: o }));
+
+export default function AddProperties() {
+  // Modo del formulario: 'Airbnb' o 'Portal'
+  const [mode, setMode] = useState<'Airbnb' | 'Portal'>('Airbnb');
+
+  // Campos compartidos
+  const [tipoPropiedad, setTipoPropiedad] = useState('');
+  const [piezas, setPiezas] = useState('');
+  const [banos, setBanos] = useState('');
+  const [ubicacion, setUbicacion] = useState('');
+  // Campo exclusivo de Airbnb
+  const [maxHuespedes, setMaxHuespedes] = useState('');
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const data = {
+      formType: mode,
+      tipoPropiedad,
+      ...(mode === 'Airbnb' && { maxHuespedes }),
+      piezas,
+      banos,
+      ubicacion,
+    };
+    console.log('Enviando datos:', data);
+    // Aquí podrías llamar a tu API:
+    // fetch('/api/propiedades', { method: 'POST', body: JSON.stringify(data') })
+  }
+
   return (
     <>
-    <Navbar />
-    <div className="add-property">
-      <div className="div-2">
-        <p className="p">Ingresa aquí las características de tu propiedad</p>
+      <Navbar />
+      <main className="mx-auto max-w-lg p-4">
+        <h1 className="text-2xl font-semibold mb-4">Agregar Propiedad</h1>
 
-        <div className="overlap-group">
-          <div className="rectangle" />
+        <button
+          type="button"
+          onClick={() =>
+            setMode((m) => (m === 'Airbnb' ? 'Portal' : 'Airbnb'))
+          }
+          className="toggle-btn mb-6 px-4 py-2 bg-gray-200 rounded"
+        >
+          Comparando con{' '}
+          {mode === 'Airbnb' ? 'Airbnb' : 'Portal Inmobiliario'}
+        </button>
 
-          <div className="text-wrapper-2">Cantidad de baños</div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Tipo de formulario (oculto) */}
+          <input type="hidden" name="formType" value={mode} />
 
-          <div className="text-wrapper-3">Comuna</div>
-
-          <div className="rectangle-2" />
-
-          <div className="text-wrapper-4">Tamaño</div>
-
-          <div className="text-wrapper-5">m</div>
-
-          <div className="text-wrapper-6">2</div>
-
-          <PropiedadDropdown
-            frameUnion="union-5.svg"
-            property1="default"
+          {/* Campo compartido: Tipo de propiedad */}
+          <Dropdown
+            label="Tipo de propiedad"
+            options={typeOptions}
+            value={tipoPropiedad}
+            onChange={setTipoPropiedad}
           />
-          <PropiedadDropdown
-            frameUnion="union-6.svg"
-            property1="default"
+
+          {/* Sólo en Airbnb: Máximo de huéspedes */}
+          {mode === 'Airbnb' && (
+            <div>
+              <label className="block mb-1">Máximo de huéspedes</label>
+              <input
+                type="number"
+                value={maxHuespedes}
+                onChange={(e) => setMaxHuespedes(e.target.value)}
+                className="w-full border rounded px-3 py-2"
+                min={1}
+              />
+            </div>
+          )}
+
+          {/* Cantidad de piezas */}
+          <Dropdown
+            label="Cantidad de piezas"
+            options={nOfBathroomsOptions}
+            value={piezas}
+            onChange={setPiezas}
           />
-        </div>
 
-        <div className="text-wrapper-7">Tamaño</div>
+          {/* Cantidad de baños */}
+          <Dropdown
+            label="Cantidad de baños"
+            options={nOfBathroomsOptions}
+            value={banos}
+            onChange={setBanos}
+          />
 
-        <div className="text-wrapper-8">Tipo de propiedad</div>
+          {/* Ubicación */}
+          <Dropdown
+            label="Ubicación (Comuna)"
+            options={comunaOptions}
+            value={ubicacion}
+            onChange={setUbicacion}
+          />
 
-        <div className="propiedad-dropdown-2">
-          <Frame className="frame-2" union="union-7.svg" />
-          <div className="frame-3">
-            <div className="tipo-3">Departamento</div>
-          </div>
-
-          <div className="frame-3">
-            <div className="tipo-3">Casa</div>
-          </div>
-        </div>
-
-        {/* <PropertyDefaultWrapper
-          className="propiedad-dropdown-3"
-          frameUnion="union-4.svg"
-          property1="default"
-        /> */}
-      </div>
-    </div>
+          <button
+            type="submit"
+            className="primary-button"
+          >
+            Guardar ({mode})
+          </button>
+        </form>
+      </main>
     </>
   );
-};
+}

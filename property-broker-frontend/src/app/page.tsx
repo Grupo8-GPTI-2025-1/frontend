@@ -25,11 +25,11 @@ export default function Home() {
             </ul>
           </div>
         </div>
-      </main>
-      <div className="button-or-button" style={styles["button-or-button"]}>
-        <Link href="/login" className="btn" style={styles["primary-button"]}>Iniciar sesión</Link>
-        <span className="or">o</span>
-        <Link href="/register" className="btn" style={styles["primary-button"]}>Registrarse</Link>
+        <br />
+      <div className="button-or-button">
+        <Link href="/login" className="primary-button">Iniciar sesión</Link>
+        <Link href="/register" className="primary-button">Registrarse</Link>
+        <Link href='/home' className='primary-button'>Dev Mode</Link>
       </div>
     </div>
     </>

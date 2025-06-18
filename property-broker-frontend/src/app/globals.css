@@ -24,3 +24,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.primary-button {
+  padding: 0.75rem;
+  background-color: #963bff;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 50%;
+}
+.primary-button:hover {
+  background-color: #a454ff; /* Color más claro al pasar el mouse */
+}
+.primary-button:active {
+  background-color: #ae67ff; /* Color aún más claro al hacer clic */
+}

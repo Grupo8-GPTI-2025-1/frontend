@@ -1,0 +1,43 @@
+/* src/components/propiedades/PropertyCard.css */
+
+.property-card {
+  width: 256px;
+  height: 256px;
+  background-color: #e5e7eb; /* gris claro */
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.property-card__image-container {
+  height: 75%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #efedf3;
+}
+
+.property-card__image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.property-card__details {
+  background-color: #edeaf1; /* gris medio */
+  padding: 0.5rem 1rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.property-card__title {
+  margin: 0;
+  font-weight: 500;
+  color: #1f2937; /* texto oscuro */
+}
+
+.property-card__price {
+  margin: 0;
+  color: #574b62; /* texto secundario */
+}

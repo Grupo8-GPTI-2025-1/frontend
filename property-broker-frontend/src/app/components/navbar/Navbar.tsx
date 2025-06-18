@@ -12,8 +12,10 @@ export default function Navbar() {
         { href: '/',           label: 'Home',       showOn: ['/', '/login', '/register'] },
         { href: '/login',      label: 'Inicia Sesión',      showOn: ['/', '/about'] },
         { href: '/register',   label: 'Registro',   showOn: ['/', '/login'] },
-        { href: '/dashboard',  label: 'Panel',      showOn: ['/dashboard'] },
+        { href: '/dashboard',  label: 'Dashboard',      showOn: ['/dashboard'] },
+        { href: '/home',       label: 'Inicio',     showOn: ['/add-property', '/properties', '/dashboard']},
         { href: '/profile',    label: 'Perfil',     showOn: ['/dashboard'] },
+        { href: '/',           label: 'Cerrar Sesión',      showOn: ['/add-property', '/dashboard', '/properties', '/home']}
     ];
 
     const filtered = buttons.filter(b => b.showOn.includes(pathname))

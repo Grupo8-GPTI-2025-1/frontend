@@ -1,0 +1,15 @@
+.primary-button {
+    background-color: #963bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 180px;
+    margin-top: 30px
+}
+.form-propiedades {
+    display: flex;
+    flex-direction: column;
+    padding: 23px 0px 0px 0px;
+}
