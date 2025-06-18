@@ -52,6 +52,7 @@ const dummyProperties: Property[] = [
 
 type PageProps = {
   params: { id: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
 const imagePlaceholderMapper: Record<string, string> = {
