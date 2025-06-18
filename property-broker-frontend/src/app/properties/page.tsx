@@ -61,25 +61,37 @@ export default function PropertiesPage() {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    // Simula llamada a API
-    const timeout = setTimeout(() => {
+    async function fetchProperties() {
       try {
-        setProperties(dummyProperties);
+        const res = await fetch('http://localhost:8000/properties');
+        if (!res.ok) throw new Error('Failed to fetch');
+
+        const data: Property[] = await res.json();
+
+        // If API returns an empty list, use dummy data
+        if (data.length === 0) {
+          console.warn('No properties found. Using fallback data.');
+          setProperties(dummyProperties);
+        } else {
+          setProperties(data);
+        }
       } catch (error) {
+        console.error('Error loading properties:', error);
         setIsError(true);
+        setProperties(dummyProperties); // Use fallback if fetch fails
       } finally {
         setIsLoading(false);
       }
-    }, 1000);
+    }
 
-    return () => clearTimeout(timeout);
+    fetchProperties();
   }, []);
 
   return (
     <>
       <Navbar />
       <main className="mx-auto max-w-7xl p-4">
-        <h1 className="text-3xl font-semibold mb-6">Propiedades Similares</h1>
+        <h1 className="text-3xl font-semibold mb-6">Propiedades</h1>
         <PropertyGrid
           properties={properties}
           isLoading={isLoading}
@@ -89,40 +101,3 @@ export default function PropertiesPage() {
     </>
   );
 }
-
-
-// app/propiedades/page.tsx       (o pages/propiedades/index.tsx si usas Pages Router)
-// 'use client';
-// import Navbar from '../components/navbar/Navbar';
-
-// import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-// import { useProperties } from '@/hooks/useProperties';
-// import PropertyGrid from '../components/PropertyGrid';
-
-// const qc = new QueryClient();
-
-// export default function Listado() {
-//   return (
-//     <QueryClientProvider client={qc}>
-//       <ListadoInner />
-//     </QueryClientProvider>
-//   );
-// }
-
-// function ListadoInner() {
-//   const { data, isLoading, isError } = useProperties(8);
-
-//   return (
-//     <>
-//     <Navbar/>
-//     <main className="mx-auto max-w-screen-2xl px-4 py-8 lg:px-8">
-//       {/* Aquí iría tu <FilterBar /> */}
-//       <PropertyGrid
-//         properties={data}
-//         isLoading={isLoading}
-//         isError={isError}
-//       />
-//     </main>
-//     </>
-//   );
-// }
