@@ -63,7 +63,7 @@ export default function PropertiesPage() {
   useEffect(() => {
     async function fetchProperties() {
       try {
-        const res = await fetch('http://localhost:8000/properties');
+        const res = await fetch('http://localhost:4000/properties');
         if (!res.ok) throw new Error('Failed to fetch');
 
         const data: Property[] = await res.json();
