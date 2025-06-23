@@ -6,32 +6,30 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet" />
-      
-      <div className="flex flex-col items-center justify-start min-h-screen px-8 py-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-8 items-center sm:items-start">
-          <div className="landing-text" style={styles["landing-text"]}>
-            <div className="text-wrapper-5" style={styles["property-expert-logo"]}>
-              PROPERTY EXPERT
-            </div>
-            <br />
-            <div className="div" style={styles.bajada}>
-              Tu herramienta de decidir de manera <b>justa</b> y precisa el valor de tu propiedad
-            </div>
-            <br />
-            <div className="unordered-list" style={styles["unordered-list"]}>
-              <ul>
-                <li>Compara tu propiedad con las de Airbnb y el Portal Inmobiliario</li>
-                <li>Calcula el precio de mercado de tu propiedad mediante otras con características similares</li>
-                <li>Descubre la oferta inmobiliaria en Santiago de Chile</li>
-              </ul>
-            </div>
-          </div>
+      <div className="flex flex-col items-center justify-center min-h-screen px-8 pb-20 pt-12 sm:px-20 font-inter gap-16">
+        <main className="flex flex-col gap-8 items-center max-w-4xl text-center">
+          <h1 className="text-6xl font-light tracking-widest text-[#342B46] -mt-10">PROPERTY EXPERT</h1>
 
-          <div className="button-or-button">
-            <Link href="/login" className="primary-button">Iniciar sesión</Link>
-            <Link href="/register" className="primary-button">Registrarse</Link>
-            <Link href="/home" className="primary-button">Dev Mode</Link>
+          <p className="text-base sm:text-lg text-[#342B46] font-light -mt-8 pt-0">
+            Tu herramienta para decidir de manera <b className="font-black">justa</b> y <b className="font-black">precisa</b> el valor de tu propiedad
+          </p>
+
+          <ul className="text-lg sm:text-xl text-[#342B46] font-light list-none text-left leading-[3.5rem]">
+            <li>🏠🔍 Compara tu propiedad con las de Airbnb y el Portal Inmobiliario</li>
+            <li>🧮💲 Calcula el precio de mercado mediante otras con características similares</li>
+            <li>📍🇨🇱 Descubre la oferta inmobiliaria en Santiago de Chile</li>
+          </ul>
+
+          <div className="flex flex-wrap justify-center gap-4 mt-6">
+            <Link href="/login" className="bg-[#963BFF] text-white px-6 py-3 rounded-md text-lg hover:bg-purple-700 transition">
+              Iniciar sesión
+            </Link>
+            <Link href="/register" className="bg-[#963BFF] text-white px-6 py-3 rounded-md text-lg hover:bg-purple-700 transition">
+              Registrarse
+            </Link>
+            <Link href="/home" className="bg-[#963BFF] text-white px-6 py-3 rounded-md text-lg hover:bg-purple-700 transition">
+              Dev Mode
+            </Link>
           </div>
         </main>
       </div>
