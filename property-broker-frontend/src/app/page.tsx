@@ -8,6 +8,7 @@ export default function Home() {
       <Navbar />
       <div className="flex flex-col items-center justify-center min-h-screen px-8 pb-20 pt-12 sm:px-20 font-inter gap-16">
         <main className="flex flex-col gap-8 items-center max-w-4xl text-center">
+
           <h1 className="text-6xl font-light tracking-widest text-[#342B46] -mt-10">PROPERTY EXPERT</h1>
 
           <p className="text-base sm:text-lg text-[#342B46] font-light -mt-8 pt-0">
@@ -19,7 +20,7 @@ export default function Home() {
             <li>🧮💲 Calcula el precio de mercado mediante otras con características similares</li>
             <li>📍🇨🇱 Descubre la oferta inmobiliaria en Santiago de Chile</li>
           </ul>
-
+          
           <div className="flex flex-wrap justify-center gap-4 mt-6">
             <Link href="/login" className="bg-[#963BFF] text-white px-6 py-3 rounded-md text-lg hover:bg-purple-700 transition">
               Iniciar sesión
@@ -36,7 +37,6 @@ export default function Home() {
     </>
   );
 }
-
 
 const styles: { [key: string]: React.CSSProperties } = {
   "landing-text": {
