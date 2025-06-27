@@ -5,20 +5,26 @@ import { Property } from '@/lib/types'
 
 export type Props = {
   property: Property;
+  modelType?: string
 };
 
 const imagePlaceholderMapper: Record<string, string> = {
-  departamento: 'edificio.jpg',
+  departamento: 'departamento.jpg',
   casa: 'casa.jpg',
-  default: 'edificio.jpg',
+  default: 'departamento.jpg',
 };
 
 function getPlaceholder(propertyType: string) {
-  const key = propertyType.toLowerCase();
-  return imagePlaceholderMapper[key] || imagePlaceholderMapper.default;
+  const typeKey = propertyType.toLowerCase();
+  return imagePlaceholderMapper[typeKey] || imagePlaceholderMapper.default;
 }
 
-const PropertyCard: React.FC<Props> = ({ property }) => {
+// function getCardDetailColor(modelType: string){
+//   const color = modelType.toLowerCase() === 'airbnb' ? "#ffe83b" : "#ff3b80";
+  
+// }
+
+const PropertyCard: React.FC<Props> = ({ property, modelType }) => {
   const imageSrc = getPlaceholder(property.property_type);
   return (
     <div className="property-card">
@@ -30,14 +36,28 @@ const PropertyCard: React.FC<Props> = ({ property }) => {
         />
       </div>
 
-      <div className="property-card__details">
+      <div className="property-card__details"> {/*style={styles[`${modelType}`]}> */}
         <p className="property-card__title">
-          {property.property_type} en {property.location}
+          <b>{property.name}</b>
+          {/* {property.property_type} en {property.location} */}
         </p>
-        <p className="property-card__price">{property.price}</p>
+        <p className="property-card__price">{Number(property.price).toLocaleString('es-CL', {
+                  style: 'currency',
+                  currency: 'CLP',
+                  minimumFractionDigits: 0,
+                })}</p>
       </div>
     </div>
   );
 };
+
+const styles = {
+  airbnb: {
+    backgroundColor: "#ffe83b",
+  },
+  portal: {
+    backgroundColor: "#ff3b80",
+  }
+}
 
 export default PropertyCard;

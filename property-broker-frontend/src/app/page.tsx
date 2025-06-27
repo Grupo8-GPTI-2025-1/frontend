@@ -1,6 +1,7 @@
 import Navbar from "./components/navbar/Navbar";
 import './components/navbar/styles.css';
 import Link from "next/link";
+import { hydrateRoot } from 'react-dom/client';
 
 export default function Home() {
   return (

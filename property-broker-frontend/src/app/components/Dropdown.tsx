@@ -7,7 +7,7 @@ interface Option {
 
 interface DropdownProps {
   label?: string;
-  options: Option[];
+  options?: Option[];
   value: string;
   onChange: (value: string) => void;
 }
@@ -24,7 +24,7 @@ export default function Dropdown({ label, options, value, onChange }: DropdownPr
         <option value="" disabled hidden>
           Selecciona una opción
         </option>
-        {options.map((o) => (
+        {options?.map((o) => (
           <option key={o.value} value={o.value}>
             {o.label}
           </option>

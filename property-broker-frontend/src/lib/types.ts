@@ -14,6 +14,11 @@ price: string;
 location: string;
 url: string;
 
-// unico para airbnbs
+// unicos para airbnbs
 guests?: number;
+nights?: number;
+
+// unicos para portal
+coordinates?: {long: number, lat: number};
+transport?: {Paraderos: string[], Metro: string[]};
 }

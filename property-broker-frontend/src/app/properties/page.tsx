@@ -9,7 +9,7 @@ import { Property } from '@/lib/types';
 // Datos dummy simulando la estructura de Property
 const dummyProperties: Property[] = [
   {
-    id: '1',
+    id: "1",
     property_type: 'Departamento',
     location: 'Providencia',
     price: '$1.200.000',
@@ -20,7 +20,7 @@ const dummyProperties: Property[] = [
     // imageUrl: '/images/properties/departamento.jpg',
   },
   {
-    id: '2',
+    id: "2",
     property_type: 'Casa',
     location: 'Las Condes',
     price: '$2.500.000',
@@ -31,7 +31,7 @@ const dummyProperties: Property[] = [
     url: "placeholder.com"
   },
   {
-    id: '3',
+    id:"3",
     property_type: 'Otro',
     location: 'Ñuñoa',
     price: '$850.000',
@@ -42,7 +42,7 @@ const dummyProperties: Property[] = [
     url: "placeholder.com"
   },
   {
-    id: '4',
+    id:"4",
     property_type: 'Departamento',
     location: 'La Florida',
     price: '$950.000',
@@ -57,6 +57,7 @@ const dummyProperties: Property[] = [
 
 export default function PropertiesPage() {
   const [properties, setProperties] = useState<Property[] | undefined>(undefined);
+  const [airbnbs, setAirbnbs] = useState<Property[] | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -64,6 +65,7 @@ export default function PropertiesPage() {
     async function fetchProperties() {
       try {
         const res = await fetch('http://localhost:4000/properties');
+        console.log("RESPONSE:",res)
         if (!res.ok) throw new Error('Failed to fetch');
 
         const data: Property[] = await res.json();
@@ -84,16 +86,44 @@ export default function PropertiesPage() {
       }
     }
 
+    async function fetchAirbnbs() {
+      try {
+        const res = await fetch('http://localhost:4000/airbnbs');
+        if (!res.ok) throw new Error('Failed to fetch');  
+        const data: Property[] = await res.json();
+        // If API returns an empty list, use dummy data
+        if (data.length === 0) {
+          console.warn('No airbnbs found. Using fallback data.');
+          setAirbnbs(dummyProperties);
+        } else {
+          setAirbnbs(data);
+        }
+      } catch (error) {
+        console.error('Error loading airbnbs:', error);
+        setIsError(true);
+        setAirbnbs(dummyProperties); // Use fallback if fetch fails
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
     fetchProperties();
+    fetchAirbnbs();
   }, []);
 
   return (
     <>
       <Navbar />
       <main className="mx-auto max-w-7xl p-4">
-        <h1 className="text-3xl font-semibold mb-6">Propiedades</h1>
+        <h1 className="text-3xl text-center text-[#963bff] font-semibold mb-12">Propiedades del Portal Inmobiliario</h1>
         <PropertyGrid
           properties={properties}
+          isLoading={isLoading}
+          isError={isError}
+        />
+        <h1 className="text-3xl text-center text-[#963bff] font-semibold mb-12 mt-12">Propiedades de Airbnb</h1>
+        <PropertyGrid
+          properties={airbnbs}
           isLoading={isLoading}
           isError={isError}
         />

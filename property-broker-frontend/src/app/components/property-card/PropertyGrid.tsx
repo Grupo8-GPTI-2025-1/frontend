@@ -32,8 +32,8 @@ export default function PropertyGrid({ properties, isLoading, isError }: Props) 
       {properties.map((p) => (
         <Link
           key={p.id}
-          href={`/property/${p.id}`}
-          className="block hover:shadow-lg hover:-translate-y-1 transition-transform duration-200"
+          href={`/properties/${p.id}`}
+          className="block w-64 h-64 hover:shadow-lg hover:-translate-y-1 transition-transform duration-200"
           passHref
         >
           <PropertyCard key={p.id} property={p} />
